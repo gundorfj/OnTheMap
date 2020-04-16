@@ -306,6 +306,9 @@
                                 <state key="normal" title="Sign up here if you do not have an account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="signUpNoAccountField:" destination="lmu-V5-DGi" eventType="touchUpInside" id="90v-pK-bbJ"/>
+                                </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HI8-Qw-jEB">
                                 <rect key="frame" x="188.5" y="566" width="37" height="37"/>
@@ -339,6 +342,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ozc-m0-oGW"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="gKB-5c-H6v" id="OwA-pE-NCq"/>
+                        <outlet property="loginActivityIndicatorView" destination="HI8-Qw-jEB" id="QDv-ak-lUg"/>
+                        <outlet property="passwordTextField" destination="fcU-X2-uzh" id="cjc-zr-Gmw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IG4-Al-fhg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

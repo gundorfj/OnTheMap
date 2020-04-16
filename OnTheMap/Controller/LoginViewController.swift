@@ -10,7 +10,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var loginActivityIndicatorView: UIActivityIndicatorView!
+
+    @IBAction func signUpNoAccountField(_ sender: Any) {
+    }
+
     @IBAction func LoginButtonAction(_ sender: Any) {
         
         // 1. Sign in user

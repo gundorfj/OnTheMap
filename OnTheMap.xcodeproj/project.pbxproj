@@ -20,6 +20,7 @@
 		FA7348BD2447AFD40079C6D4 /* OTMInfoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7348BC2447AFD40079C6D4 /* OTMInfoPostingViewController.swift */; };
 		FA7348C02447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7348BF2447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift */; };
 		FAD2D0F62448639400B72469 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D0F52448639400B72469 /* CustomSegue.swift */; };
+		FAD2D0F92448E81300B72469 /* UIController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D0F82448E81300B72469 /* UIController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FA7348BC2447AFD40079C6D4 /* OTMInfoPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMInfoPostingViewController.swift; sourceTree = "<group>"; };
 		FA7348BF2447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMInfoPostingMapViewController.swift; sourceTree = "<group>"; };
 		FAD2D0F52448639400B72469 /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
+		FAD2D0F82448E81300B72469 /* UIController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +72,12 @@
 		FA73489A24479F1E0079C6D4 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				FA7348AB24479F200079C6D4 /* Info.plist */,
+				FA73489B24479F1E0079C6D4 /* AppDelegate.swift */,
+				FAD2D0F72448E6FB00B72469 /* Assets */,
 				FA7348B324479F4B0079C6D4 /* Controller */,
 				FA7348B224479F450079C6D4 /* View */,
 				FA7348B124479F3C0079C6D4 /* Model */,
-				FA7348A624479F200079C6D4 /* Assets.xcassets */,
-				FA7348AB24479F200079C6D4 /* Info.plist */,
 				FAD2D0F52448639400B72469 /* CustomSegue.swift */,
 			);
 			path = OnTheMap;
@@ -90,17 +93,7 @@
 		FA7348B224479F450079C6D4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FA7348A324479F1E0079C6D4 /* Main.storyboard */,
-				FA7348A824479F200079C6D4 /* LaunchScreen.storyboard */,
-				FA73489B24479F1E0079C6D4 /* AppDelegate.swift */,
 				FA73489D24479F1E0079C6D4 /* SceneDelegate.swift */,
-				FA7348A124479F1E0079C6D4 /* SecondViewController.swift */,
-				FA7348B42447A0120079C6D4 /* LoginViewController.swift */,
-				FA7348B62447A7F40079C6D4 /* OTMTabBarController.swift */,
-				FA7348B82447AB240079C6D4 /* OTMMapViewController.swift */,
-				FA7348BA2447ABD30079C6D4 /* OTMListViewController.swift */,
-				FA7348BC2447AFD40079C6D4 /* OTMInfoPostingViewController.swift */,
-				FA7348BF2447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,8 +101,26 @@
 		FA7348B324479F4B0079C6D4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FA7348A124479F1E0079C6D4 /* SecondViewController.swift */,
+				FA7348B42447A0120079C6D4 /* LoginViewController.swift */,
+				FA7348B62447A7F40079C6D4 /* OTMTabBarController.swift */,
+				FA7348B82447AB240079C6D4 /* OTMMapViewController.swift */,
+				FA7348BC2447AFD40079C6D4 /* OTMInfoPostingViewController.swift */,
+				FA7348BA2447ABD30079C6D4 /* OTMListViewController.swift */,
+				FA7348BF2447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift */,
+				FAD2D0F82448E81300B72469 /* UIController+Ext.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		FAD2D0F72448E6FB00B72469 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				FA7348A324479F1E0079C6D4 /* Main.storyboard */,
+				FA7348A824479F200079C6D4 /* LaunchScreen.storyboard */,
+				FA7348A624479F200079C6D4 /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 				FA7348A224479F1E0079C6D4 /* SecondViewController.swift in Sources */,
 				FA73489C24479F1E0079C6D4 /* AppDelegate.swift in Sources */,
 				FA7348B52447A0120079C6D4 /* LoginViewController.swift in Sources */,
+				FAD2D0F92448E81300B72469 /* UIController+Ext.swift in Sources */,
 				FA7348B92447AB240079C6D4 /* OTMMapViewController.swift in Sources */,
 				FA7348C02447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift in Sources */,
 				FA7348BD2447AFD40079C6D4 /* OTMInfoPostingViewController.swift in Sources */,
