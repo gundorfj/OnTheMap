@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MapKit
 
 class OTMMapViewController: UIViewController {
 
+    @IBOutlet weak var otmMapView: MKMapView!
+    
     @IBAction func OTMLogoutAction(_ sender: Any) {
         
         let otmLoginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")

@@ -36,15 +36,27 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hs4-uG-Os1">
+                                <rect key="frame" x="0.0" y="77" width="414" height="736"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hs4-uG-Os1" firstAttribute="leading" secondItem="a2S-rA-YdT" secondAttribute="leading" id="Uf3-d9-yAO"/>
+                            <constraint firstItem="a2S-rA-YdT" firstAttribute="trailing" secondItem="hs4-uG-Os1" secondAttribute="trailing" id="b6R-U8-tUZ"/>
+                            <constraint firstItem="hs4-uG-Os1" firstAttribute="top" secondItem="a2S-rA-YdT" secondAttribute="top" constant="33" id="u6s-qM-nQ4"/>
+                            <constraint firstItem="a2S-rA-YdT" firstAttribute="bottom" secondItem="hs4-uG-Os1" secondAttribute="bottom" id="wSR-DK-cOt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="a2S-rA-YdT"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icon_mapview-deselected" id="75T-Io-KUX"/>
+                    <connections>
+                        <outlet property="otmMapView" destination="hs4-uG-Os1" id="wZX-jT-WKt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKT-Fc-lkm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748" y="-346"/>
+            <point key="canvasLocation" x="747.82608695652175" y="-346.20535714285711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cqS-Ir-f0Z">
@@ -151,14 +163,42 @@
                     <view key="view" contentMode="scaleToFill" id="hIJ-RG-yZv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IWm-x3-sgY">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2u-Gh-8tS">
+                                <rect key="frame" x="20" y="741" width="374" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JyY-gr-Bb4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="FINISH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7qy-RE-bkr" firstAttribute="trailing" secondItem="IWm-x3-sgY" secondAttribute="trailing" id="9w8-sv-Fbw"/>
+                            <constraint firstItem="t2u-Gh-8tS" firstAttribute="leading" secondItem="7qy-RE-bkr" secondAttribute="leading" constant="20" id="B50-j3-XHz"/>
+                            <constraint firstItem="IWm-x3-sgY" firstAttribute="leading" secondItem="7qy-RE-bkr" secondAttribute="leading" id="KSP-3p-O2o"/>
+                            <constraint firstItem="IWm-x3-sgY" firstAttribute="top" secondItem="7qy-RE-bkr" secondAttribute="top" id="OdO-DH-M46"/>
+                            <constraint firstItem="7qy-RE-bkr" firstAttribute="bottom" secondItem="IWm-x3-sgY" secondAttribute="bottom" id="iag-ac-iwj"/>
+                            <constraint firstItem="7qy-RE-bkr" firstAttribute="trailing" secondItem="t2u-Gh-8tS" secondAttribute="trailing" constant="20" id="pMs-5g-scG"/>
+                            <constraint firstItem="7qy-RE-bkr" firstAttribute="bottom" secondItem="t2u-Gh-8tS" secondAttribute="bottom" constant="22" id="xSu-6P-NkG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7qy-RE-bkr"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="cPl-SJ-TCp"/>
+                    <connections>
+                        <outlet property="finderMapView" destination="IWm-x3-sgY" id="Udj-Ut-R5c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYq-bz-L8L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3794" y="-32"/>
+            <point key="canvasLocation" x="3792.753623188406" y="-32.142857142857139"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="fXb-Hh-Nam">
@@ -333,6 +373,6 @@
         <image name="logo-u" width="62" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5Zf-fv-kj9"/>
+        <segue reference="7Ah-4s-3Xz"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MapKit
 
 class OTMInfoPostingMapViewController: UIViewController {
 
+    @IBOutlet weak var finderMapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
