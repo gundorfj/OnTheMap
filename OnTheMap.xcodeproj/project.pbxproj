@@ -21,6 +21,12 @@
 		FA7348C02447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7348BF2447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift */; };
 		FAD2D0F62448639400B72469 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D0F52448639400B72469 /* CustomSegue.swift */; };
 		FAD2D0F92448E81300B72469 /* UIController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D0F82448E81300B72469 /* UIController+Ext.swift */; };
+		FAD2D0FB2448F11B00B72469 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D0FA2448F11B00B72469 /* StudentInformation.swift */; };
+		FAD2D0FD2448F23D00B72469 /* Authentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D0FC2448F23D00B72469 /* Authentification.swift */; };
+		FAD2D0FF244901FD00B72469 /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D0FE244901FD00B72469 /* StudentCell.swift */; };
+		FAD2D101244A075600B72469 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D100244A075600B72469 /* BaseViewController.swift */; };
+		FAD2D103244A3C6C00B72469 /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D102244A3C6C00B72469 /* OTMClient.swift */; };
+		FAD2D105244A68EC00B72469 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D104244A68EC00B72469 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +46,12 @@
 		FA7348BF2447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMInfoPostingMapViewController.swift; sourceTree = "<group>"; };
 		FAD2D0F52448639400B72469 /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		FAD2D0F82448E81300B72469 /* UIController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIController+Ext.swift"; sourceTree = "<group>"; };
+		FAD2D0FA2448F11B00B72469 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
+		FAD2D0FC2448F23D00B72469 /* Authentification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentification.swift; sourceTree = "<group>"; };
+		FAD2D0FE244901FD00B72469 /* StudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
+		FAD2D100244A075600B72469 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		FAD2D102244A3C6C00B72469 /* OTMClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
+		FAD2D104244A68EC00B72469 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +84,7 @@
 		FA73489A24479F1E0079C6D4 /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				FA73489D24479F1E0079C6D4 /* SceneDelegate.swift */,
 				FA7348AB24479F200079C6D4 /* Info.plist */,
 				FA73489B24479F1E0079C6D4 /* AppDelegate.swift */,
 				FAD2D0F72448E6FB00B72469 /* Assets */,
@@ -86,6 +99,10 @@
 		FA7348B124479F3C0079C6D4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FAD2D0FA2448F11B00B72469 /* StudentInformation.swift */,
+				FAD2D0FC2448F23D00B72469 /* Authentification.swift */,
+				FAD2D102244A3C6C00B72469 /* OTMClient.swift */,
+				FAD2D104244A68EC00B72469 /* API.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -93,7 +110,7 @@
 		FA7348B224479F450079C6D4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FA73489D24479F1E0079C6D4 /* SceneDelegate.swift */,
+				FAD2D0FE244901FD00B72469 /* StudentCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -109,6 +126,7 @@
 				FA7348BA2447ABD30079C6D4 /* OTMListViewController.swift */,
 				FA7348BF2447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift */,
 				FAD2D0F82448E81300B72469 /* UIController+Ext.swift */,
+				FAD2D100244A075600B72469 /* BaseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -194,17 +212,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAD2D0FB2448F11B00B72469 /* StudentInformation.swift in Sources */,
 				FA7348A224479F1E0079C6D4 /* SecondViewController.swift in Sources */,
 				FA73489C24479F1E0079C6D4 /* AppDelegate.swift in Sources */,
 				FA7348B52447A0120079C6D4 /* LoginViewController.swift in Sources */,
 				FAD2D0F92448E81300B72469 /* UIController+Ext.swift in Sources */,
+				FAD2D101244A075600B72469 /* BaseViewController.swift in Sources */,
 				FA7348B92447AB240079C6D4 /* OTMMapViewController.swift in Sources */,
+				FAD2D0FD2448F23D00B72469 /* Authentification.swift in Sources */,
 				FA7348C02447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift in Sources */,
+				FAD2D103244A3C6C00B72469 /* OTMClient.swift in Sources */,
 				FA7348BD2447AFD40079C6D4 /* OTMInfoPostingViewController.swift in Sources */,
 				FA7348BB2447ABD30079C6D4 /* OTMListViewController.swift in Sources */,
 				FA7348B72447A7F40079C6D4 /* OTMTabBarController.swift in Sources */,
 				FAD2D0F62448639400B72469 /* CustomSegue.swift in Sources */,
 				FA73489E24479F1E0079C6D4 /* SceneDelegate.swift in Sources */,
+				FAD2D105244A68EC00B72469 /* API.swift in Sources */,
+				FAD2D0FF244901FD00B72469 /* StudentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
