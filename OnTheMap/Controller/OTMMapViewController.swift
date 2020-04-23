@@ -82,28 +82,16 @@ class OTMMapViewController: BaseViewController, MKMapViewDelegate {
         if control == view.rightCalloutAccessoryView {
             
             if let toOpen = view.annotation?.subtitle! {
-                guard let url = URL(string: toOpen) else {return}
-                openBrowser(url:url)
-            }
-        }
-    }
-    
-    func mapView(mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == annotationView.rightCalloutAccessoryView {
-            guard let newUrl = annotationView.annotation?.subtitle else {return}
-            guard let stringUrl = newUrl else {return}
-            guard let url = URL(string: stringUrl) else {return}
-            openBrowser(url:url)
-        }
-    }
-    
-    func openBrowser(url:URL){
-        if url.absoluteString.contains("http://"){
-            let svc = SFSafariViewController(url: url)
-            present(svc, animated: true, completion: nil)
-        }else {
-            DispatchQueue.main.async {
-                print("could not open url")
+                
+                var urlPath = ""
+                if toOpen.contains("https://")  || toOpen.contains("http://")  {
+                    urlPath = toOpen
+                } else {
+                    let newPath = "https://\(toOpen)"
+                    urlPath = newPath
+                }
+                guard let url = URL(string: urlPath) else {return}
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
     }

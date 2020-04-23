@@ -16,6 +16,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginActivityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var loginbutton: UIButton!
     @IBAction func signUpNoAccountField(_ sender: Any) {
+        guard let url = URL(string: "https://auth.udacity.com/sign-up") else {
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
     @IBAction func LoginButtonAction(_ sender: Any) {

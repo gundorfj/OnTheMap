@@ -23,16 +23,23 @@ struct StudentInformation: Codable {
     static var lastFetched: [StudentInformation]?
 }
 
-struct Result: Codable {
-    let results: [StudentInformation]?
-}
 
-enum Param: String {
-    case updatedAt
-}
+
 extension StudentInformation {
     init(mapString: String, mediaURL: String) {
         self.mapString = mapString
         self.mediaURL = mediaURL
     }
 }
+
+struct Result: Codable {
+    let results: [StudentInformation]?
+}
+
+enum Param: String {
+    case updatedAt
+    case createdAt
+
+}
+
+

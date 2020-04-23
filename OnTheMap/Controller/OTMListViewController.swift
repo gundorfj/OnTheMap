@@ -14,26 +14,25 @@ class OTMListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        super.viewDidLoad()
-        print("view did load")
         tableView.delegate = self
         tableView.dataSource = self
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         result = StudentInformation.lastFetched ?? []
-        
-        
+        tableView?.reloadData()
     }
 }
 
 extension OTMListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return result.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "StudentCell") as! StudentCell
         let student = self.result[(indexPath).row]
         cell.name.text = "\(student.firstName ?? " ")  \(student.lastName ?? " ")"

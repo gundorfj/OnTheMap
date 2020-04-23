@@ -90,7 +90,7 @@
                                     <constraint firstAttribute="width" constant="88" id="nCv-cN-FwY"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N4H-X5-sxX">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N4H-X5-sxX">
                                 <rect key="frame" x="20" y="289" width="374" height="50"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" causesPageTurn="YES"/>
@@ -101,7 +101,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yvh-Xf-De8">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Link" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yvh-Xf-De8">
                                 <rect key="frame" x="20" y="358" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="rX8-91-2vd"/>
@@ -119,7 +119,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="KHM-Yi-h23" kind="show" id="2Qm-px-oEu"/>
+                                    <action selector="otmFindLocationAction:" destination="Ut4-7X-TFD" eventType="touchUpInside" id="bHl-hL-YaW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -151,6 +151,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="link" destination="Yvh-Xf-De8" id="T4H-ii-QDS"/>
+                        <outlet property="name" destination="N4H-X5-sxX" id="2uD-Nm-Uue"/>
+                        <outlet property="otmFindLocationOutlet" destination="Def-ge-VPT" id="MJv-MP-oEK"/>
+                        <segue destination="KHM-Yi-h23" kind="show" identifier="whereOnMap" id="SNy-tV-BfD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Sd-b0-uKh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -166,6 +172,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IWm-x3-sgY">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <connections>
+                                    <outlet property="delegate" destination="KHM-Yi-h23" id="ahx-Ak-FpR"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2u-Gh-8tS">
                                 <rect key="frame" x="20" y="741" width="374" height="50"/>
@@ -177,6 +186,9 @@
                                 <state key="normal" title="FINISH">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="finishTapped:" destination="KHM-Yi-h23" eventType="touchUpInside" id="hxd-bd-Unw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

@@ -19,6 +19,11 @@ struct loginResponse: Codable {
     let session: Session
 }
 
+struct getUserResponse: Codable {
+    let last_name: String
+    let first_name: String
+}
+
 struct Account: Codable {
     let registered: Bool?
     let key: String?

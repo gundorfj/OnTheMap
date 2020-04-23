@@ -89,10 +89,10 @@ class API: NSObject {
         print(error)
     }
     
-    func getStudentsLocations(limit: Int = 100, skip: Int = 0, orderBy: Param = .updatedAt, completion: @escaping ([StudentInformation]?, Error?)->()){
+    func getStudentsLocations(limit: Int = 500, skip: Int = 0, orderBy: Param = .updatedAt, completion: @escaping ([StudentInformation]?, Error?)->()){
         
         
-        let urlString = "https://onthemap-api.udacity.com/v1/StudentLocation?limit=\(limit)&skip=\(skip)"
+        let urlString = "https://onthemap-api.udacity.com/v1/StudentLocation?limit=\(limit)&skip=\(skip)&order=-\(orderBy)"
         print("urlString: \(urlString)")
         let request = URLRequest(url: URL(string: urlString)!)
         let session = URLSession.shared
@@ -119,7 +119,7 @@ class API: NSObject {
                 print("there is error in decoding data\n")
                 print(error.localizedDescription)
             }
-            //print(String(data: data, encoding: .utf8)!)
+            print(String(data: data, encoding: .utf8)!)
         }
         task.resume()
         
@@ -161,15 +161,14 @@ class API: NSObject {
             completionHandlerForGet(false, nil, "could not find account key")
             return
         }
-        let urlString = "https://onthemap-api.udacity.com/v1/users/\(accountKey)"
-        let url = URL(string: urlString)
+        let studentUrl = "https://onthemap-api.udacity.com/v1/users/\(accountKey)"
         print("account key: \(accountKey)")
-        print("url is: \(url!)")
-        var request = URLRequest(url: url!)
+        print("urlString: \(studentUrl)")
+        var request = URLRequest(url: URL(string: studentUrl)!)
         request.httpMethod = "GET"
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
-            if error != nil { // Handle error
+            if error != nil {
                 completionHandlerForGet(false, nil, error?.localizedDescription)
                 return
             }
@@ -188,10 +187,10 @@ class API: NSObject {
             print(String(data: newData, encoding: .utf8))
             do {
                 let decoder = JSONDecoder()
-                let decodedData = try! decoder.decode(StudentInformation.self, from: newData)
+                let decodedData = try! decoder.decode(getUserResponse.self, from: newData)
                 var student = StudentInformation()
-                student.firstName = decodedData.firstName
-                student.lastName = decodedData.lastName
+                student.firstName = decodedData.first_name
+                student.lastName = decodedData.last_name
                 student.uniqueKey = self.accountKey
                 completionHandlerForGet(true, student, nil)
             } catch let error {
@@ -206,21 +205,19 @@ class API: NSObject {
     
     func postStudent(_ student: StudentInformation, completionHandlerPost: @escaping (_ success: Bool, _ error: String?) -> Void) {
         
-        let encoder = JSONEncoder()
-        let jsonData: Data
-        do {
-            jsonData = try encoder.encode(student)
-        } catch let error {
-            print(error.localizedDescription)
-            return
-        }
+//        let encoder = JSONEncoder()
+//        let jsonData: Data
+//        do {
+//            jsonData = try encoder.encode(student)
+//        } catch let error {
+//            print(error.localizedDescription)
+//            return
+//        }
         
         var request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/StudentLocation")!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonData
-        //            "{\"uniqueKey\": \"\(student.uniqueKey)\", \"firstName\": \"\(student.firstName)\", \"lastName\": \"\(student.lastName)\",\"mapString\": \"\(student.mapString)\", \"mediaURL\": \"\(student.mediaURL)\",\"latitude\": \(student.latitude), \"longitude\": \(student.longitude)}".data(using: .utf8)
-        
+        request.httpBody = try! JSONEncoder().encode(student)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil { // Handle error…
