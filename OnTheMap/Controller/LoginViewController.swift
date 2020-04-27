@@ -24,7 +24,6 @@ class LoginViewController: UIViewController {
 
     @IBAction func LoginButtonAction(_ sender: Any) {
         
-        
         setLoggingIn(true)
         CheckInput()
 
@@ -33,20 +32,12 @@ class LoginViewController: UIViewController {
                 // for any error not expeceted
                 if let error = error {
                     print(error.localizedDescription)
-                    let errorAlert = UIAlertController(title: "Error", message: "An error happened", preferredStyle: .alert)
-                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
-                        return
-                    }))
-                    self.present(errorAlert, animated: true, completion: nil)
+                    Helpers.sharedHelper.setupAlert(self,"Error", "An error happened")
                 }
                 
                 //  wrong password or Email
                 if !success {
-                    let invalidAccessAlert = UIAlertController(title: "Invalid Access", message: "Invalid email or password", preferredStyle: .alert)
-                    invalidAccessAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
-                        return
-                    }))
-                    self.present(invalidAccessAlert, animated: true, completion: nil)
+                    Helpers.sharedHelper.setupAlert(self,"Invalid Access", "Invalid email or password")
                 }
                 else
                 {
@@ -100,11 +91,7 @@ class LoginViewController: UIViewController {
     
     private func CheckInput(){
         if (emailTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)!  {
-            let alert = UIAlertController(title: "Fill the auth info", message: "Please fill both email and password", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
-                return
-            }))
-            self.present(alert, animated: true, completion: nil)
+            Helpers.sharedHelper.setupAlert(self,"Fill the auth info", "Please fill both email and password")
         }
     }
 }

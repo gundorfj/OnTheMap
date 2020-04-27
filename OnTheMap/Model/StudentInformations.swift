@@ -9,7 +9,7 @@
 import Foundation
 class StudentInformations
 {
-    let fetchingNumberOfStudents: Int = 200
+    let fetchingNumberOfStudents: Int = 100
 
     static let sharedArray = StudentInformations()
 

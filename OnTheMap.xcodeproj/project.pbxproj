@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA562C9C2457620500F5781C /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA562C9B2457620500F5781C /* SpinnerView.swift */; };
 		FA73489C24479F1E0079C6D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73489B24479F1E0079C6D4 /* AppDelegate.swift */; };
 		FA73489E24479F1E0079C6D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73489D24479F1E0079C6D4 /* SceneDelegate.swift */; };
 		FA7348A524479F1E0079C6D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7348A324479F1E0079C6D4 /* Main.storyboard */; };
@@ -22,7 +23,6 @@
 		FA90EB532452BE77007630B3 /* StudentInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90EB522452BE77007630B3 /* StudentInformations.swift */; };
 		FA98CF112451A02E00937A18 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98CF102451A02E00937A18 /* Helpers.swift */; };
 		FAD2D0F62448639400B72469 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D0F52448639400B72469 /* CustomSegue.swift */; };
-		FAD2D0F92448E81300B72469 /* UIController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D0F82448E81300B72469 /* UIController+Ext.swift */; };
 		FAD2D0FB2448F11B00B72469 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D0FA2448F11B00B72469 /* StudentInformation.swift */; };
 		FAD2D0FD2448F23D00B72469 /* Authentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D0FC2448F23D00B72469 /* Authentification.swift */; };
 		FAD2D0FF244901FD00B72469 /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2D0FE244901FD00B72469 /* StudentCell.swift */; };
@@ -31,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA562C9B2457620500F5781C /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		FA73489824479F1E0079C6D4 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA73489B24479F1E0079C6D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA73489D24479F1E0079C6D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		FA90EB522452BE77007630B3 /* StudentInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformations.swift; sourceTree = "<group>"; };
 		FA98CF102451A02E00937A18 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		FAD2D0F52448639400B72469 /* CustomSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
-		FAD2D0F82448E81300B72469 /* UIController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIController+Ext.swift"; sourceTree = "<group>"; };
 		FAD2D0FA2448F11B00B72469 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		FAD2D0FC2448F23D00B72469 /* Authentification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentification.swift; sourceTree = "<group>"; };
 		FAD2D0FE244901FD00B72469 /* StudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
@@ -115,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				FAD2D0FE244901FD00B72469 /* StudentCell.swift */,
+				FA562C9B2457620500F5781C /* SpinnerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,7 +129,6 @@
 				FA7348BC2447AFD40079C6D4 /* OTMInfoPostingViewController.swift */,
 				FA7348BA2447ABD30079C6D4 /* OTMListViewController.swift */,
 				FA7348BF2447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift */,
-				FAD2D0F82448E81300B72469 /* UIController+Ext.swift */,
 				FAD2D100244A075600B72469 /* BaseViewController.swift */,
 			);
 			path = Controller;
@@ -219,11 +219,11 @@
 				FA98CF112451A02E00937A18 /* Helpers.swift in Sources */,
 				FA73489C24479F1E0079C6D4 /* AppDelegate.swift in Sources */,
 				FA7348B52447A0120079C6D4 /* LoginViewController.swift in Sources */,
-				FAD2D0F92448E81300B72469 /* UIController+Ext.swift in Sources */,
 				FAD2D101244A075600B72469 /* BaseViewController.swift in Sources */,
 				FA7348B92447AB240079C6D4 /* OTMMapViewController.swift in Sources */,
 				FAD2D0FD2448F23D00B72469 /* Authentification.swift in Sources */,
 				FA7348C02447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift in Sources */,
+				FA562C9C2457620500F5781C /* SpinnerView.swift in Sources */,
 				FA90EB5124523D0D007630B3 /* Event.swift in Sources */,
 				FA7348BD2447AFD40079C6D4 /* OTMInfoPostingViewController.swift in Sources */,
 				FA7348BB2447ABD30079C6D4 /* OTMListViewController.swift in Sources */,

@@ -12,7 +12,7 @@ import SafariServices
 
 class Helpers
 {   
-    static let sharedHelper = Helpers()  // singleton object
+    static let sharedHelper = Helpers()
     
     func validateStringToURL(urlString: String?) -> URL?
     {
@@ -26,7 +26,7 @@ class Helpers
                 let newPath = "https://\(urlString)"
                 urlPath = newPath
             }
-            if canOpenURL(string: urlPath)
+            if canOpenURL(urlPath)
             {
                 return URL(string: urlPath)
             }
@@ -35,7 +35,7 @@ class Helpers
     }
     
     
-    func canOpenURL(string: String?) -> Bool {
+    private func canOpenURL(_ string: String?) -> Bool {
         guard let urlString = string else {return false}
         guard let url = NSURL(string: urlString) else {return false}
         if !UIApplication.shared.canOpenURL(url as URL) {return false}
@@ -44,5 +44,15 @@ class Helpers
         let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
         let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
         return predicate.evaluate(with: string)
+    }
+    
+    
+    func setupAlert(_ vc: UIViewController, _ header: String, _ body: String)
+    {
+        let alert = UIAlertController(title: header, message: body, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            return
+        }))
+        vc.present(alert, animated: true, completion: nil)
     }
 }

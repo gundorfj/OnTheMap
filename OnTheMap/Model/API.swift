@@ -127,18 +127,18 @@ class API: NSObject {
         request.httpMethod = "DELETE"
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
-            func dispalyError(_ error: String){
+            func displayError(_ error: String){
                 print(error)
             }
             guard (error == nil) else {
                 return
             }
             guard let data = data else {
-                dispalyError("Data is empty")
+                displayError("Data is empty")
                 return
             }
             guard let status = (response as? HTTPURLResponse)?.statusCode, status >= 200 && status <= 399 else {
-                dispalyError("Status code in range of > 2xx")
+                displayError("Status code in range of > 2xx")
                 return
             }
             let range = (5..<data.count)

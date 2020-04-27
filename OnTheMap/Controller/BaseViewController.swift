@@ -58,15 +58,12 @@ class BaseViewController: UIViewController {
         API.shared.getStudentsLocations { (result, error) in
             DispatchQueue.main.async {
                 if error != nil {
-                    let alert = UIAlertController(title: "Fail", message: "sorry, we could not fetch data", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    print("error")
+                    Helpers.sharedHelper.setupAlert(self,"Fail", "sorry, we could not fetch data")
                     return
                 }
 
                 guard result != nil else {
-                    let alert = UIAlertController(title: "Fail", message: "sorry, we could not fetch data", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    Helpers.sharedHelper.setupAlert(self,"Fail", "sorry, we could not fetch data")
                     return
                 }
             }
