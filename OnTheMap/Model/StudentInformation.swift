@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 struct StudentInformation: Codable {
     var objectId : String?
     var uniqueKey : String?
@@ -20,9 +21,7 @@ struct StudentInformation: Codable {
     var longitude : Double?
     var createdAt : String?
     var updatedAt : String?
-    static var lastFetched: [StudentInformation]?
 }
-
 
 
 extension StudentInformation {
@@ -39,7 +38,6 @@ struct Result: Codable {
 enum Param: String {
     case updatedAt
     case createdAt
-
 }
 
 

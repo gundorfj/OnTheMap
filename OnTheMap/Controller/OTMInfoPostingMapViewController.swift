@@ -49,18 +49,17 @@ class OTMInfoPostingMapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
-    
-    
+        
     @IBAction func finishTapped(_ sender: Any) {
-        API.shared.getUser { (success, student, errorMessage) in
+        API.shared.getOTMUser { (success, student, errorMessage) in
             if success {
-                print("student?.uniqueKey: \(student?.uniqueKey)")
+                print("student?.uniqueKey: \(String(describing: student?.uniqueKey))")
                 DispatchQueue.main.async {
                     self.sendInformation(student!)
                 }
             } else {
                 DispatchQueue.main.async {
-                    print(errorMessage)
+                    print(errorMessage!)
                 }
             }
         }
@@ -94,24 +93,16 @@ class OTMInfoPostingMapViewController: UIViewController, MKMapViewDelegate {
         newStudent.mediaURL = link
         newStudent.longitude = longitude
         newStudent.latitude = latitude
-        API.shared.postStudent(newStudent) { (success, errorMessage) in
+        API.shared.postOTMStudent(newStudent) { (success, errorMessage) in
             if success {
                 DispatchQueue.main.async {
                     self.navigationController?.popToRootViewController(animated: true)
                 }
             } else {
                 DispatchQueue.main.async {
-                    print(errorMessage)
+                    print(errorMessage!)
                 }
             }
         }
-    }
-}
-
-extension Date {
-   func getFormattedDate(format: String) -> String {
-        let dateformat = DateFormatter()
-        dateformat.dateFormat = format
-        return dateformat.string(from: self)
     }
 }

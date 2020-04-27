@@ -16,12 +16,13 @@ class OTMListViewController: BaseViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
+        super.delegate = self
+        super.getOTMStudents(force: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        result = StudentInformation.lastFetched ?? []
+        result = StudentInformations.sharedArray.lastFetched ?? []
         tableView?.reloadData()
     }
 }
@@ -41,11 +42,23 @@ extension OTMListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let url = self.result[(indexPath).row].mediaURL
-        print("url is: \(String(describing: url))")
-        if let url = URL(string: url ?? " ")
+        let url = Helpers.sharedHelper.validateStringToURL(urlString: self.result[(indexPath).row].mediaURL!)
+        if (url != nil)
         {
-            UIApplication.shared.open(url)
+          UIApplication.shared.open(url!)
+        }
+    }
+}
+
+
+extension OTMListViewController: ModelDelegate {
+    func studentsLoaded(_ data: String) {
+        print(data)
+        result = StudentInformations.sharedArray.lastFetched ?? []
+
+        DispatchQueue.main.async {
+
+            self.tableView?.reloadData()
         }
     }
 }

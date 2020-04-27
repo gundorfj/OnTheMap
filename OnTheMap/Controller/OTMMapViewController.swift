@@ -14,49 +14,43 @@ class OTMMapViewController: BaseViewController, MKMapViewDelegate {
 
     @IBOutlet weak var otmMapView: MKMapView!
     
-
+    var map = [MKPointAnnotation]()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        super.delegate = self
+        super.getOTMStudents(force: false)
+    }
+    
+    func populatePins()
+    {
         
-        API.shared.getStudentsLocations(){(result, error) in
-            DispatchQueue.main.async {
-                if error != nil {
-                    let alert = UIAlertController(title: "Fail", message: "sorry, we could not fetch data", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    print("error")
-                    return
-                }
-                
-                guard result != nil else {
-                    let alert = UIAlertController(title: "Fail", message: "sorry, we could not fetch data", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    return
-                }
-                
-                StudentInformation.lastFetched = result
-                var map = [MKPointAnnotation]()
-                
-                for location in result! {
-                    let long = CLLocationDegrees(location.longitude ?? 0.0)
-                    let lat = CLLocationDegrees(location.latitude ?? 0.0)
-                    let cords = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                    let mediaURL = location.mediaURL ?? " "
-                    let firstName = location.firstName ?? " "
-                    let lastName = location.lastName ?? " "
-                    
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = cords
-                    annotation.title = "\(firstName) \(lastName)"
-                    annotation.subtitle = mediaURL
-                    map.append(annotation)
-                }
-                self.otmMapView.addAnnotations(map)
-            }
+        let annotations = self.otmMapView.annotations
+        if (annotations.count > 0)
+        {
+            self.otmMapView.removeAnnotations(annotations)
         }
+        
+        for location in StudentInformations.sharedArray .lastFetched! {
+            let long = CLLocationDegrees(location.longitude ?? 0.0)
+            let lat = CLLocationDegrees(location.latitude ?? 0.0)
+            let cords = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            let mediaURL = location.mediaURL ?? " "
+            let firstName = location.firstName ?? " "
+            let lastName = location.lastName ?? " "
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = cords
+            annotation.title = "\(firstName) \(lastName)"
+            annotation.subtitle = mediaURL
+            map.append(annotation)
+        }
+        self.otmMapView.addAnnotations(self.map)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     
@@ -82,18 +76,22 @@ class OTMMapViewController: BaseViewController, MKMapViewDelegate {
         if control == view.rightCalloutAccessoryView {
             
             if let toOpen = view.annotation?.subtitle! {
-                
-                var urlPath = ""
-                if toOpen.contains("https://")  || toOpen.contains("http://")  {
-                    urlPath = toOpen
-                } else {
-                    let newPath = "https://\(toOpen)"
-                    urlPath = newPath
+                 
+                let url = Helpers.sharedHelper.validateStringToURL(urlString: toOpen)
+                if (url != nil)
+                {
+                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
                 }
-                guard let url = URL(string: urlPath) else {return}
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
     }
 }
 
+extension OTMMapViewController: ModelDelegate {
+    func studentsLoaded(_ data: String) {
+        print(data)
+        DispatchQueue.main.async {
+            self.populatePins()
+        }
+    }
+}

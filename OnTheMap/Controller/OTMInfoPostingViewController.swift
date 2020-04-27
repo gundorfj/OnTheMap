@@ -22,6 +22,39 @@ class OTMInfoPostingViewController: UIViewController {
     
     @IBAction func otmFindLocationAction(_ sender: Any) {
         
+        
+        CheckInput()
+
+        
+  //      let url = Helpers.sharedHelper.validateStringToURL(urlString: toOpen)
+//        if (url != nil)
+//        {
+//            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+//        }
+//
+//
+//        if (name.text?.isEmpty)
+//        {
+//            checkFieldText()
+//        }
+//
+//
+//        guard let placeMarks = placeMarks else {
+//            print("unable to find location")
+//            return
+//        }
+//
+//
+//        if (name.text?.isEmpty)! || (link.text?.isEmpty)!  {
+//            let alert = UIAlertController(title: "Fill the auth info", message: "Please fill both email and password", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+//                return
+//            }))
+//            self.present(alert, animated: true, completion: nil)
+//        }
+//
+        
+        
         if   name.text != "" && link.text != "" {
          //   ActivityIndicator.startActivityIndicator(view: self.view )
             
@@ -53,6 +86,32 @@ class OTMInfoPostingViewController: UIViewController {
             }
         }
     }
+    
+    
+    
+    private func CheckInput(){
+        
+
+        
+//        if (emailTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)!  {
+//            let alert = UIAlertController(title: "Fill the auth info", message: "Please fill both email and password", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+//                return
+//            }))
+//            self.present(alert, animated: true, completion: nil)
+//        }
+    }
+    
+    func checkFieldText(text: String)
+    {
+        let alert = UIAlertController(title: "Please fill ", message: "can't be empty", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            return
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func otmFindCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
