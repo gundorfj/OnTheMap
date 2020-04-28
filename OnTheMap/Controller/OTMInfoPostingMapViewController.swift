@@ -101,6 +101,8 @@ class OTMInfoPostingMapViewController: UIViewController, MKMapViewDelegate {
             } else {
                 DispatchQueue.main.async {
                     print(errorMessage!)
+                    Helpers.sharedHelper.setupAlert(self, "Something went wrong", "Not possible to save new location")
+
                 }
             }
         }

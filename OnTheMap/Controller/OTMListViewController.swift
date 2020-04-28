@@ -9,7 +9,6 @@ import UIKit
 
 class OTMListViewController: BaseViewController {
 
-    var result = [StudentInformation]()
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -22,7 +21,6 @@ class OTMListViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        result = StudentInformations.sharedArray.lastFetched ?? []
         tableView?.reloadData()
     }
 }
@@ -30,19 +28,29 @@ class OTMListViewController: BaseViewController {
 extension OTMListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return result.count
+        
+        let lastfetched = StudentInformations.sharedArray.lastFetched
+        
+        if (lastfetched == nil)
+        {
+            return 0
+        }
+        else
+        {
+            return lastfetched!.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StudentCell") as! StudentCell
-        let student = self.result[(indexPath).row]
+        let student = StudentInformations.sharedArray.lastFetched![(indexPath).row]
         cell.name.text = "\(student.firstName ?? " ")  \(student.lastName ?? " ")"
         cell.imageURL.text = student.mediaURL
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let url = Helpers.sharedHelper.validateStringToURL(urlString: self.result[(indexPath).row].mediaURL!)
+        let url = Helpers.sharedHelper.validateStringToURL(urlString: StudentInformations.sharedArray.lastFetched![(indexPath).row].mediaURL!)
         if (url != nil)
         {
           UIApplication.shared.open(url!)
@@ -50,14 +58,10 @@ extension OTMListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
 extension OTMListViewController: ModelDelegate {
     func studentsLoaded(_ data: String) {
         print(data)
-        result = StudentInformations.sharedArray.lastFetched ?? []
-
         DispatchQueue.main.async {
-
             self.tableView?.reloadData()
         }
     }
