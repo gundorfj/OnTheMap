@@ -90,7 +90,6 @@ class LoginViewController: BaseViewController {
         emailTextField.isEnabled = !loggingIn
         passwordTextField.isEnabled = !loggingIn
         loginbutton.isEnabled = !loggingIn
-      //  loginViaWebsiteButton.isEnabled = !loggingIn
     }
     
     private func CheckInput(){

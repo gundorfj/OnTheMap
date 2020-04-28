@@ -30,7 +30,7 @@ class OTMInfoPostingViewController: BaseViewController {
         
         gecodeCoordinates(name.text!) { (success, errorMessage) in
             if success {
-                print("student?.uniqueKey: \(String(describing: self.student.uniqueKey))")
+                debugPrint("student?.uniqueKey: \(String(describing: self.student.uniqueKey))")
                 DispatchQueue.main.async {
                     ActivityIndicator.stopActivityIndicator()
                 }
@@ -74,7 +74,7 @@ class OTMInfoPostingViewController: BaseViewController {
         CLGeocoder().geocodeAddressString(mapstring) { (placeMarks, error) in
             ai.stopAnimating()
             if error != nil {
-                print(error?.localizedDescription ?? " ")
+                debugPrint(error?.localizedDescription ?? " ")
                 completion (false, error)
                 return
             }
@@ -82,8 +82,8 @@ class OTMInfoPostingViewController: BaseViewController {
                 completion (false, MyError.runtimeError("Placemark was not found"))
                 return
             }
-            print("placeMarks: \(placeMarks)")
-            print("placeMarks.first?.location?.coordinate: \(String(describing: placeMarks.first?.location?.coordinate))")
+            debugPrint("placeMarks: \(placeMarks)")
+            debugPrint("placeMarks.first?.location?.coordinate: \(String(describing: placeMarks.first?.location?.coordinate))")
             if placeMarks.count <= 0 {
                 completion (false, MyError.runtimeError("placeMarks is lower than zero!"))
                 return
