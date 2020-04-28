@@ -19,6 +19,7 @@
 		FA7348BB2447ABD30079C6D4 /* OTMListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7348BA2447ABD30079C6D4 /* OTMListViewController.swift */; };
 		FA7348BD2447AFD40079C6D4 /* OTMInfoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7348BC2447AFD40079C6D4 /* OTMInfoPostingViewController.swift */; };
 		FA7348C02447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7348BF2447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift */; };
+		FA8A928124585597007903FF /* KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A928024585597007903FF /* KeyboardExtension.swift */; };
 		FA90EB5124523D0D007630B3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90EB5024523D0D007630B3 /* Event.swift */; };
 		FA90EB532452BE77007630B3 /* StudentInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90EB522452BE77007630B3 /* StudentInformations.swift */; };
 		FA98CF112451A02E00937A18 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98CF102451A02E00937A18 /* Helpers.swift */; };
@@ -45,6 +46,7 @@
 		FA7348BA2447ABD30079C6D4 /* OTMListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMListViewController.swift; sourceTree = "<group>"; };
 		FA7348BC2447AFD40079C6D4 /* OTMInfoPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMInfoPostingViewController.swift; sourceTree = "<group>"; };
 		FA7348BF2447B3FF0079C6D4 /* OTMInfoPostingMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMInfoPostingMapViewController.swift; sourceTree = "<group>"; };
+		FA8A928024585597007903FF /* KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtension.swift; sourceTree = "<group>"; };
 		FA90EB5024523D0D007630B3 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FA90EB522452BE77007630B3 /* StudentInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformations.swift; sourceTree = "<group>"; };
 		FA98CF102451A02E00937A18 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				FA7348B124479F3C0079C6D4 /* Model */,
 				FAD2D0F52448639400B72469 /* CustomSegue.swift */,
 				FA90EB5024523D0D007630B3 /* Event.swift */,
+				FA8A928024585597007903FF /* KeyboardExtension.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				FA98CF112451A02E00937A18 /* Helpers.swift in Sources */,
 				FA73489C24479F1E0079C6D4 /* AppDelegate.swift in Sources */,
 				FA7348B52447A0120079C6D4 /* LoginViewController.swift in Sources */,
+				FA8A928124585597007903FF /* KeyboardExtension.swift in Sources */,
 				FAD2D101244A075600B72469 /* BaseViewController.swift in Sources */,
 				FA7348B92447AB240079C6D4 /* OTMMapViewController.swift in Sources */,
 				FAD2D0FD2448F23D00B72469 /* Authentification.swift in Sources */,

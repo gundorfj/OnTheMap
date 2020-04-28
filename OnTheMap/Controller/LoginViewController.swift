@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
     // Mark: - OutLets
     @IBOutlet weak var passwordTextField: UITextField!
@@ -60,11 +60,15 @@ class LoginViewController: UIViewController {
         emailTextField.borderStyle = .roundedRect
         passwordTextField.borderStyle = .roundedRect
         loginbutton.layer.cornerRadius = 5
-        setupNotification(UIResponder.keyboardWillShowNotification, selector: #selector(keyboardWillShow))
-        setupNotification(UIResponder.keyboardWillHideNotification, selector: #selector(keyboardWillHide))
+        self.setupNotification(UIResponder.keyboardWillShowNotification, selector: #selector(keyboardWillShow))
+        self.setupNotification(UIResponder.keyboardWillHideNotification, selector: #selector(keyboardWillHide))
         
         loginActivityIndicatorView.hidesWhenStopped = true
         // Do any additional setup after loading the view.
+    }
+    
+    deinit {
+       self.removeNotifications()
     }
     
     
@@ -92,52 +96,6 @@ class LoginViewController: UIViewController {
     private func CheckInput(){
         if (emailTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)!  {
             Helpers.sharedHelper.setupAlert(self,"Fill the auth info", "Please fill both email and password")
-        }
-    }
-}
-
-private extension LoginViewController {
-    
-    func setupNotification(_ notification: NSNotification.Name, selector: Selector) {
-        NotificationCenter.default.addObserver(self, selector: selector, name: notification, object: nil)
-    }
-    
-    func removeNotifications() {
-        NotificationCenter.default.removeObserver(self)
-    }
-}
-
-
-extension LoginViewController: UITextFieldDelegate {
-    
-    // MARK: UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    // MARK: Show/Hide Keyboard
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        if keyboardHeight(notification) > 400 {
-        view.frame.origin.y = -keyboardHeight(notification)
-        }
-    }
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        view.frame.origin.y = 0
-    }
-    
-    func keyboardHeight(_ notification: Notification) -> CGFloat {
-        let userInfo = (notification as NSNotification).userInfo
-        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
-        return keyboardSize.cgRectValue.height
-    }
-    
-    func resignIfFirstResponder(_ textField: UITextField) {
-        if textField.isFirstResponder {
-            textField.resignFirstResponder()
         }
     }
 }

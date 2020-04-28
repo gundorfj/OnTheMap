@@ -60,6 +60,7 @@ class OTMInfoPostingMapViewController: UIViewController, MKMapViewDelegate {
             } else {
                 DispatchQueue.main.async {
                     print(errorMessage!)
+                    Helpers.sharedHelper.setupAlert(self, "Something went wrong", errorMessage!)
                 }
             }
         }
@@ -102,7 +103,6 @@ class OTMInfoPostingMapViewController: UIViewController, MKMapViewDelegate {
                 DispatchQueue.main.async {
                     print(errorMessage!)
                     Helpers.sharedHelper.setupAlert(self, "Something went wrong", "Not possible to save new location")
-
                 }
             }
         }

@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class OTMInfoPostingViewController: UIViewController {
+class OTMInfoPostingViewController: BaseViewController {
 
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var link: UITextField!
@@ -51,7 +51,16 @@ class OTMInfoPostingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        name.delegate = self
+        link.delegate = self
+        name.borderStyle = .roundedRect
+        link.borderStyle = .roundedRect
+        self.setupNotification(UIResponder.keyboardWillShowNotification, selector: #selector(keyboardWillShow))
+        self.setupNotification(UIResponder.keyboardWillHideNotification, selector: #selector(keyboardWillHide))
+    }
+    
+    deinit {
+       self.removeNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,48 +112,6 @@ class OTMInfoPostingViewController: UIViewController {
 
 enum MyError: Error {
     case runtimeError(String)
-}
-
-
-
-extension OTMInfoPostingViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        view.frame.origin.y = -otmFindLocationOutlet.frame.origin.y+50
-    }
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        view.frame.origin.y = 0
-    }
-    
-    func keyboardHeight(_ notification: Notification) -> CGFloat {
-        let userInfo = (notification as NSNotification).userInfo
-        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
-        return keyboardSize.cgRectValue.height
-    }
-    
-    func resignIfFirstResponder(_ textField: UITextField) {
-        if textField.isFirstResponder {
-            textField.resignFirstResponder()
-        }
-    }
-}
-
-private extension OTMInfoPostingViewController {
-    
-    func subscribeToNotification(_ notification: NSNotification.Name, selector: Selector) {
-        NotificationCenter.default.addObserver(self, selector: selector, name: notification, object: nil)
-    }
-    
-    func unsubscribeFromAllNotifications() {
-        NotificationCenter.default.removeObserver(self)
-    }
 }
 
 
