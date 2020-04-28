@@ -36,7 +36,7 @@ class API: NSObject {
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
             
             func showError(_ error: String){
-                print(error)
+                debugPrint(error)
             }
             
             guard (error == nil) else {
@@ -64,18 +64,18 @@ class API: NSObject {
                 let sessionID = dataDecoded.session.id
                 let sessionExpire = dataDecoded.session.expiration
                 self.accountKey = accountID ?? ""
-                print("Authentication Info")
-                print("-------------------\n")
-                print("Account ID: \(String(describing: accountID!))")
-                print("Account registered: \(String(describing: accountRegister!))")
-                print("Session ID: \(String(describing: sessionID!))")
-                print("Session expire: \(String(describing: sessionExpire!))")
-                print("-------------------\n")
+                debugPrint("Authentication Info")
+                debugPrint("-------------------\n")
+                debugPrint("Account ID: \(String(describing: accountID!))")
+                debugPrint("Account registered: \(String(describing: accountRegister!))")
+                debugPrint("Session ID: \(String(describing: sessionID!))")
+                debugPrint("Session expire: \(String(describing: sessionExpire!))")
+                debugPrint("-------------------\n")
                 completion (true, nil)
-                print("Login is successful!")
+                debugPrint("Login is successful!")
             } catch let error {
-                print("Error when decoding data\n")
-                print(error.localizedDescription)
+                debugPrint("Error when decoding data\n")
+                debugPrint(error.localizedDescription)
                 completion (false, nil)
                 return
             }
@@ -84,14 +84,14 @@ class API: NSObject {
     }
     
     private func showError(_ error: String){
-        print(error)
+        debugPrint(error)
     }
     
     func getStudentsLocations(limit: Int = StudentInformations.sharedArray.fetchingNumberOfStudents, skip: Int = 0, orderBy: Param = .updatedAt, completion: @escaping ([StudentInformation]?, Error?)->()){
         
         
         let urlString = "https://onthemap-api.udacity.com/v1/StudentLocation?limit=\(limit)&skip=\(skip)&order=-\(orderBy)"
-        print("urlString: \(urlString)")
+        debugPrint("urlString: \(urlString)")
         let request = URLRequest(url: URL(string: urlString)!)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
@@ -100,12 +100,12 @@ class API: NSObject {
                 return
             }
             guard let data = data else {
-                print("data error")
+                debugPrint("data error")
                 completion(nil, error)
                 return
             }
             guard let status = (response as? HTTPURLResponse)?.statusCode, status >= 200 && status <= 399 else {
-                print("response error")
+                debugPrint("response error")
                 completion(nil, error)
                 return
             }
@@ -114,10 +114,10 @@ class API: NSObject {
                 let result = try decoder.decode(Result.self, from: data)
                 completion(result.results, nil)
             } catch let error {
-                print("Error when decoding data\n")
-                print(error.localizedDescription)
+                debugPrint("Error when decoding data\n")
+                debugPrint(error.localizedDescription)
             }
-            print(String(data: data, encoding: .utf8)!)
+            debugPrint(String(data: data, encoding: .utf8)!)
         }
         task.resume()
     }
@@ -128,7 +128,7 @@ class API: NSObject {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             func displayError(_ error: String){
-                print(error)
+                debugPrint(error)
             }
             guard (error == nil) else {
                 return
@@ -144,11 +144,11 @@ class API: NSObject {
             let range = (5..<data.count)
             let newData = data.subdata(in: range)
 
-            print("Authentication Info")
-            print("-------------------\n")
-            print(String(data: newData, encoding: .utf8)!)
-            print("-------------------\n")
-            print("Logout is successful!")
+            debugPrint("Authentication Info")
+            debugPrint("-------------------\n")
+            debugPrint(String(data: newData, encoding: .utf8)!)
+            debugPrint("-------------------\n")
+            debugPrint("Logout is successful!")
         }
         task.resume()
     }
@@ -159,8 +159,8 @@ class API: NSObject {
             return
         }
         let studentUrl = "https://onthemap-api.udacity.com/v1/users/\(accountKey)"
-        print("account key: \(accountKey)")
-        print("urlString: \(studentUrl)")
+        debugPrint("account key: \(accountKey)")
+        debugPrint("urlString: \(studentUrl)")
         var request = URLRequest(url: URL(string: studentUrl)!)
         request.httpMethod = "GET"
         let session = URLSession.shared
@@ -177,10 +177,10 @@ class API: NSObject {
                 completionHandlerForGet(false, nil, error?.localizedDescription)
                 return
             }
-            print(String(data: data, encoding: .utf8)!)
+            debugPrint(String(data: data, encoding: .utf8)!)
             let range = (5..<data.count)
             let newData = data.subdata(in: range)
-            print(String(data: newData, encoding: .utf8)!)
+            debugPrint(String(data: newData, encoding: .utf8)!)
             do {
                 let decoder = JSONDecoder()
                 let decodedData = try decoder.decode(getUserResponse.self, from: newData)
@@ -190,11 +190,11 @@ class API: NSObject {
                 student.uniqueKey = self.accountKey
                 completionHandlerForGet(true, student, nil)
             } catch let error {
-                print(error.localizedDescription)
+                debugPrint(error.localizedDescription)
                 completionHandlerForGet(false, nil, error.localizedDescription)
                 return
             }
-            print(String(data: data, encoding: .utf8)!)
+            debugPrint(String(data: data, encoding: .utf8)!)
         }
         task.resume()
     }
@@ -223,10 +223,10 @@ class API: NSObject {
                 _ = try decoder.decode(StudentInformation.self, from: data)
                 completionHandlerPost(true, nil)
             } catch let error {
-                print(error.localizedDescription)
+                debugPrint(error.localizedDescription)
                 return
             }
-            print(String(data: data, encoding: .utf8)!)
+            debugPrint(String(data: data, encoding: .utf8)!)
         }
         task.resume()
     }

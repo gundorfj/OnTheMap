@@ -60,7 +60,7 @@ extension OTMListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension OTMListViewController: ModelDelegate {
     func studentsLoaded(_ data: String) {
-        print(data)
+        debugPrint(data)
         DispatchQueue.main.async {
             self.tableView?.reloadData()
         }

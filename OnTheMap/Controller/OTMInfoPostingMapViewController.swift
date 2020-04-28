@@ -53,13 +53,13 @@ class OTMInfoPostingMapViewController: UIViewController, MKMapViewDelegate {
     @IBAction func finishTapped(_ sender: Any) {
         API.shared.getOTMUser { (success, student, errorMessage) in
             if success {
-                print("student?.uniqueKey: \(String(describing: student?.uniqueKey))")
+                debugPrint("student?.uniqueKey: \(String(describing: student?.uniqueKey))")
                 DispatchQueue.main.async {
                     self.sendInformation(student!)
                 }
             } else {
                 DispatchQueue.main.async {
-                    print(errorMessage!)
+                    debugPrint(errorMessage!)
                     Helpers.sharedHelper.setupAlert(self, "Something went wrong", errorMessage!)
                 }
             }
@@ -97,14 +97,17 @@ class OTMInfoPostingMapViewController: UIViewController, MKMapViewDelegate {
         API.shared.postOTMStudent(newStudent) { (success, errorMessage) in
             if success {
                 DispatchQueue.main.async {
-                    self.navigationController?.popToRootViewController(animated: true)
+               //     self.navigationController?.popToRootViewController(animated: true)
+                    self.navigationController!.dismiss(animated: false, completion:nil);
+
                 }
             } else {
                 DispatchQueue.main.async {
-                    print(errorMessage!)
+                    debugPrint(errorMessage!)
                     Helpers.sharedHelper.setupAlert(self, "Something went wrong", "Not possible to save new location")
                 }
             }
         }
     }
 }
+

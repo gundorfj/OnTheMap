@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class OTMInfoPostingViewController: BaseViewController {
+class OTMInfoPostingViewController: UIViewController {
 
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var link: UITextField!
@@ -41,9 +41,8 @@ class OTMInfoPostingViewController: BaseViewController {
                 }
             }
         }
-
     }
-    
+   
     
     @IBAction func otmFindCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -107,7 +106,6 @@ class OTMInfoPostingViewController: BaseViewController {
             vc.longitude = student.longitude
         }
     }
-    
 }
 
 enum MyError: Error {
@@ -115,7 +113,7 @@ enum MyError: Error {
 }
 
 
-extension UIViewController {
+extension OTMInfoPostingViewController {
     func startAnActivityIndicator() -> UIActivityIndicatorView {
         let ai = UIActivityIndicatorView(style: .large)
         self.view.addSubview(ai)

@@ -10,18 +10,16 @@ import Foundation
 import UIKit
 
 
-extension BaseViewController: UITextFieldDelegate
+extension UIViewController: UITextFieldDelegate
 {
-
     // MARK: UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         textField.resignFirstResponder()
         return true
     }
 
     // MARK: Show/Hide Keyboard
-
     @objc func keyboardWillShow(_ notification: Notification) {
         if keyboardHeight(notification) > 400 {
         view.frame.origin.y = -keyboardHeight(notification)

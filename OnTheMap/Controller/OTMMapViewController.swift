@@ -89,7 +89,7 @@ class OTMMapViewController: BaseViewController, MKMapViewDelegate {
 
 extension OTMMapViewController: ModelDelegate {
     func studentsLoaded(_ data: String) {
-        print(data)
+        debugPrint(data)
         DispatchQueue.main.async {
             self.populatePins()
         }

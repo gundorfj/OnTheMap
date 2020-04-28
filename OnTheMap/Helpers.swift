@@ -40,7 +40,6 @@ class Helpers
         guard let url = NSURL(string: urlString) else {return false}
         if !UIApplication.shared.canOpenURL(url as URL) {return false}
 
-        //
         let regEx = "((https|http)://)((\\w|-)+)(([.]|[/])((\\w|-)+))+"
         let predicate = NSPredicate(format:"SELF MATCHES %@", argumentArray:[regEx])
         return predicate.evaluate(with: string)
