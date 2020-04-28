@@ -97,7 +97,6 @@ class OTMInfoPostingMapViewController: UIViewController, MKMapViewDelegate {
         API.shared.postOTMStudent(newStudent) { (success, errorMessage) in
             if success {
                 DispatchQueue.main.async {
-               //     self.navigationController?.popToRootViewController(animated: true)
                     self.navigationController!.dismiss(animated: false, completion:nil);
 
                 }

@@ -31,7 +31,7 @@ class LoginViewController: BaseViewController {
             DispatchQueue.main.async {
                 // for any error not expeceted
                 if let error = error {
-                    print(error.localizedDescription)
+                    debugPrint(error.localizedDescription)
                     Helpers.sharedHelper.setupAlert(self,"Error", "An error happened")
                 }
                 
